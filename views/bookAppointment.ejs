@@ -49,12 +49,8 @@
     <h1>Book an Appointment</h1>
     <form action="/book-appointment" method="POST">
       <div>
-        <label for="doctor">Select Doctor:</label>
-        <select name="doctor" id="doctor">
-          <option value="dr-smith">Dr. Smith - Cardiologist</option>
-          <option value="dr-johnson">Dr. Johnson - Neurologist</option>
-          <option value="dr-brown">Dr. Brown - General Practitioner</option>
-        </select>
+        <label for="doctor">Enter Doctor ID:</label>
+        <input type="text" name="doctor" id="doctor" required placeholder="Enter Doctor ID">
       </div>
       <div>
         <label for="date">Select Date:</label>
@@ -62,7 +58,7 @@
       </div>
       <div>
         <label for="appointmentDuration">Select Duration:</label>
-        <select name="appointmentDuration" id="appointmentDuration">
+        <select name="appointmentDuration" id="appointmentDuration" required>
           <option value="15">15 minutes</option>
           <option value="30">30 minutes</option>
           <option value="45">45 minutes</option>

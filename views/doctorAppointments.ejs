@@ -32,7 +32,6 @@
             <div class="patient-info">
               <h3>Patient Info</h3>
               <p>Patient ID: <%= appointment.patientID %></p>
-              <!-- Assuming patient details are fetched separately and passed in -->
               <% const patient = patients.find(p => p.patientID === appointment.patientID); %>
               <% if (patient) { %>
                 <p>Name: <%= patient.firstName %> <%= patient.lastName %></p>

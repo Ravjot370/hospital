@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+    }
+    header {
+      background: #0056b3;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: inline-block;
+      background: #444;
+      border-radius: 5px;
+    }
+    nav ul li a:hover {
+      background: #555;
+    }
+    main {
+      padding: 20px;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Staff Dashboard</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/create-account">Create Account</a></li>
+      <li><a href="/manage-appointments">Manage Appointments</a></li>
+      <li><a href="/view-appointments">View Appointments</a></li>
+      <li><a href="/medical-records">View Medical Records</a></li>
+      <!-- <li><a href="/appointment-summary-report">Generate Reports</a></li> -->
+    </ul>
+  </nav>
+  <main>
+    <div class="card">
+      <h2>Welcome to the Staff Dashboard</h2>
+      <p>Use the links above to manage appointments, view appointments, create new accounts, or generate reports. You can also view and manage medical records.</p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Your Company</p>
+  </footer>
+</body>
+</html>

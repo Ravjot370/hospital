@@ -6,7 +6,83 @@
   <title>Admin Dashboard - Hospital Management System</title>
   <link rel="stylesheet" href="/css/styles.css">
   <style>
-    /* Add your styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #007bff;
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .admin-content h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .admin-content h3 {
+      color: #555;
+    }
+    .form-group {
+      margin: 10px 0;
+    }
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #007bff;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    form {
+      display: inline;
+    }
   </style>
 </head>
 <body>
@@ -18,9 +94,11 @@
       <h2>Manage Doctors</h2>
       
       <!-- Create Doctor Button -->
-      <a href="/create-doctor" class="form-group">
-        <button>Create New Doctor</button>
-      </a>
+      <div class="form-group">
+        <a href="/create-doctor">
+          <button>Create New Doctor</button>
+        </a>
+      </div>
       
       <!-- List of Doctors -->
       <h3>List of Doctors</h3>
@@ -51,8 +129,10 @@
                 <td><%= doctor.email %></td>
                 <td><%= doctor.departmentID %></td>
                 <td>
-                  <a href="/update-doctor/<%= doctor.doctorID %>"><button>Update</button></a>
-                  <form action="/delete-doctor/<%= doctor.doctorID %>" method="POST" style="display:inline;">
+                  <a href="/update-doctor/<%= doctor.doctorID %>">
+                    <button>Update</button>
+                  </a>
+                  <form action="/delete-doctor/<%= doctor.doctorID %>" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit">Delete</button>
                   </form>

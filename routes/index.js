@@ -1,59 +1,86 @@
 const express = require('express');
 const router = express.Router();
 const Patient = require('../models/Patient');
+const User = require('../models/User');
 const Doctor = require('../models/Doctor');
 const Appointment = require('../models/Appointment');
 const MedicalRecord = require('../models/MedicalRecord');
 const Bill = require('../models/Bill');
 const Department = require('../models/Department');
+const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid'); // Import uuid library for generating unique IDs
 
 
-// Render login page
 // Render login page
 router.get('/', (req, res) => {
   res.render('login');
 });
 
-// // Handle login form submission
-// router.post('/login', async (req, res) => {
-//   const { username, password, role } = req.body;
-
-//   let user;
-//   if (role === 'patient') {
-//     user = await Patient.findOne({ username });
-//   } else if (role === 'doctor') {
-//     user = await Doctor.findOne({ username });
-//   } else if (role === 'admin') {
-//     user = await Admin.findOne({ username });
-//   }
-
-//   if (user && await bcrypt.compare(password, user.password)) {
-//     req.session.userID = user._id;
-//     req.session.role = role;
-
-//     if (role === 'patient') {
-//       res.redirect('/patient-dashboard');
-//     } else if (role === 'doctor') {
-//       res.redirect('/doctor-dashboard');
-//     } else if (role === 'admin') {
-//       res.redirect('/admin-dashboard');
-//     }
-//   } else {
-//     res.redirect('/');
-//   }
-// });
 // Handle login form submission
-router.post('/login', (req, res) => {
-  const { role } = req.body;
-  if (role === 'patient') {
-    res.redirect('/patient-dashboard');
-  } else if (role === 'doctor') {
-    res.redirect('/doctor-dashboard');
-  } else if (role === 'admin') {
-    res.redirect('/admin-dashboard');
-  } else {
+router.post('/login', async (req, res) => {
+  const { username, password, role } = req.body;
+  
+  try {
+    const user = await User.findOne({ username, role });
+    
+    if (user && await bcrypt.compare(password, user.password)) {
+      req.session.userID = user._id;
+      req.session.role = role;
+      
+      if (role === 'patient') {
+        res.redirect('/patient-dashboard');
+      } else if (role === 'doctor') {
+        res.redirect('/doctor-dashboard');
+      } else if (role === 'admin') {
+        res.redirect('/admin-dashboard');
+      } else if (role === 'staff') {
+        res.redirect('/staff-view');
+      } else {
+        res.redirect('/');
+      }
+    } else {
+      res.redirect('/');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
     res.redirect('/');
+  }
+});
+
+// Render signup page
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+// Handle logout
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).send('Error logging out.');
+    }
+    res.redirect('/');
+  });
+});
+
+// Handle signup form submission
+router.post('/signup', async (req, res) => {
+  const { username, password, role } = req.body;
+  
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    const newUser = new User({
+      userID: uuidv4(),
+      username,
+      password: hashedPassword,
+      role
+    });
+    
+    await newUser.save();
+    res.redirect('/');
+  } catch (error) {
+    console.error('Signup error:', error);
+    res.redirect('/signup');
   }
 });
 
@@ -66,6 +93,16 @@ router.get('/patient-dashboard', (req, res) => {
 router.get('/book-appointment', (req, res) => {
   res.render('bookAppointment');
 });
+// Route to render the book appointment page with a list of doctors
+// router.get('/book-appointment', async (req, res) => {
+//   try {
+//     const doctors = await Doctor.find(); // Fetch doctors from the database
+//     res.render('book-appointment', { doctors }); // Pass doctors to the view
+//   } catch (error) {
+//     console.error('Error fetching doctors:', error);
+//     res.status(500).send('Error fetching doctors.');
+//   }
+// });
 
 router.post('/book-appointment', async (req, res) => {
   try {
@@ -91,6 +128,7 @@ router.post('/book-appointment', async (req, res) => {
     res.render('book-appointment', { error: 'Error booking appointment. Please try again.' });
   }
 });
+
 // Render doctor dashboard
 // router.get('/doctor-dashboard', (req, res) => {
 //   res.render('doctor-dashboard');
@@ -98,25 +136,20 @@ router.post('/book-appointment', async (req, res) => {
 // Render doctor dashboard with assigned patients
 router.get('/doctor-dashboard', async (req, res) => {
   try {
-    // Assuming `req.session.userID` contains the logged-in doctor's ID
-    const doctorID = req.session.userID;
+    // Fetch all patients
+    const patients = await Patient.find();
 
-    // Fetch doctor details
-    const doctor = await Doctor.findById(doctorID);
-    if (!doctor) {
-      return res.status(404).send('Doctor not found.');
-    }
-
-    // Fetch patients assigned to the doctor
-    const patients = await Patient.find({ doctorID: doctorID });
+    // Fetch all doctors
+    // const doctors = await Doctor.find();
 
     // Render the doctor dashboard with data
-    res.render('doctor-dashboard', { doctor, patients });
+    res.render('doctor-dashboard', {  patients });
   } catch (error) {
     console.error('Error fetching doctor dashboard data:', error);
     res.status(500).send('Error fetching dashboard data.');
   }
 });
+
 
 // Render appointment summary report
 router.get('/appointment-summary-report', (req, res) => {
@@ -138,7 +171,16 @@ router.get('/create-account', (req, res) => {
 router.get('/appointment-confirmation', (req, res) => {
   res.render('appointment-confirmation');
 });
-
+// Route to view doctors page
+router.get('/view-doctors', async (req, res) => {
+  try {
+    const doctors = await Doctor.find(); // Fetch doctors from the database
+    res.render('view-doctors', { doctors }); // Pass doctors to the view
+  } catch (error) {
+    console.error('Error fetching doctors:', error);
+    res.status(500).send('Error fetching doctors.');
+  }
+});
 router.post('/create-account', async (req, res) => {
   try {
     const { firstName, lastName, dateOfBirth, email, address, phoneNumbers } = req.body;
@@ -439,4 +481,69 @@ router.delete('/delete-doctor/:doctorID', async (req, res) => {
     res.status(500).json({ error: 'Failed to delete doctor' });
   }
 });
+// Render staff view
+router.get('/staff-view', (req, res) => {
+  res.render('staff-view');
+});
+// Route to get the appointment summary report
+router.get('/appointment-summary-report', async (req, res) => {
+  try {
+    const { type, startDate, endDate } = req.query;
+
+    let query = {};
+    if (startDate && endDate) {
+      query.appointmentDate = {
+        $gte: new Date(startDate),
+        $lte: new Date(endDate)
+      };
+    }
+
+    let appointments;
+    switch (type) {
+      case 'daily':
+        appointments = await Appointment.aggregate([
+          { $match: query },
+          { $group: { _id: { $dateToString: { format: "%Y-%m-%d", date: "$appointmentDate" } }, count: { $sum: 1 } } },
+          { $sort: { _id: 1 } }
+        ]);
+        break;
+      case 'weekly':
+        appointments = await Appointment.aggregate([
+          { $match: query },
+          { $group: { _id: { $isoWeek: "$appointmentDate" }, count: { $sum: 1 } } },
+          { $sort: { _id: 1 } }
+        ]);
+        break;
+      case 'monthly':
+        appointments = await Appointment.aggregate([
+          { $match: query },
+          { $group: { _id: { $dateToString: { format: "%Y-%m", date: "$appointmentDate" } }, count: { $sum: 1 } } },
+          { $sort: { _id: 1 } }
+        ]);
+        break;
+      case 'financial':
+        // Assuming you have a Billing model and related financial data
+        // This part is a placeholder; you need to adjust it based on your actual data schema
+        appointments = []; // Fetch and aggregate billing data here
+        break;
+      case 'staff-performance':
+        // Assuming you have a staff performance data model or logic
+        // This part is a placeholder; you need to adjust it based on your actual data schema
+        appointments = []; // Fetch and aggregate staff performance data here
+        break;
+      case 'custom':
+        // Custom logic based on specific criteria
+        appointments = await Appointment.find(query);
+        break;
+      default:
+        appointments = [];
+    }
+
+    res.render('appointment-summary-report', { appointments, reportType: type });
+  } catch (error) {
+    console.error('Error generating report:', error);
+    res.status(500).send('Error generating report.');
+  }
+});
+
 module.exports = router;

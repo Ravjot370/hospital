@@ -8,20 +8,18 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
+      background-image: url('/images/background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #333;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #007bff;
+      background-color: rgba(0, 123, 255, 0.8);
       padding: 15px;
       color: white;
     }
@@ -32,15 +30,24 @@
       margin-left: 15px;
       text-decoration: none;
       color: white;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
     .profile-section {
       display: flex;
       align-items: center;
       margin: 20px 0;
       padding: 20px;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     }
     .profile-section img {
       border-radius: 50%;
@@ -52,14 +59,15 @@
       margin: 0;
     }
     .profile-details, .doctor-list, .hospital-list, .appointment-booking, .manage-appointments, .view-appointments {
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.9);
       padding: 20px;
       margin: 10px 0;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     }
     h3 {
       margin-top: 0;
+      color: #007bff;
     }
     .btn {
       display: inline-block;
@@ -69,50 +77,46 @@
       text-decoration: none;
       border-radius: 5px;
     }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .appointment-booking, .manage-appointments, .view-appointments {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome, Patient</h1>
+    <h1>Patient Dashboard</h1>
     <nav>
-      <a href="/profile">Account</a>
-      <a href="/create-account">Create Account</a>
       <a href="/logout">Logout</a>
     </nav>
   </header>
   <div class="container">
     <div class="profile-section">
-      <img src="/images/patient-photo.jpg" alt="Patient Photo">
+      <img src="/images/hospital.jpeg" alt="Patient Photo">
       <div>
-        <h2>John Doe</h2>
-        <p>Hospital: ABC Hospital</p>
+        <p>Hospital:Maplewood Clinic</p>
       </div>
-    </div>
-    <div class="profile-details">
-      <h3>Profile Details</h3>
-      <!-- Profile details content -->
-      <p><strong>Name:</strong> John Doe</p>
-      <p><strong>Email:</strong> john.doe@example.com</p>
-      <p><strong>Phone:</strong> +123456789</p>
-      <a href="/edit-profile" class="btn">Edit Profile</a>
     </div>
     <div class="doctor-list">
       <h3>Available Doctors</h3>
-      <!-- List of doctors -->
-      <ul>
-        <li>Dr. Smith - Cardiologist</li>
-        <li>Dr. Johnson - Neurologist</li>
-        <li>Dr. Brown - General Practitioner</li>
-      </ul>
+      <p>Explore our list of available doctors to find the right specialist for your needs.</p>
+      <a href="/view-doctors" class="btn">View Doctors</a>
     </div>
     <div class="hospital-list">
       <h3>Available Hospitals</h3>
-      <!-- List of hospitals -->
+      <p>Choose from the following hospitals for your treatment:</p>
       <ul>
-        <li>ABC Hospital</li>
-        <li>XYZ Medical Center</li>
-        <li>123 Clinic</li>
+        <li>Greenfield Hospital</li>
+        <li>Crestview Medical Center</li>
+        <li>Maplewood Clinic</li>
+        <li>Oakridge Hospital</li>
+        <li>Summit Health Center</li>
       </ul>
+      
     </div>
     <div class="appointment-booking">
       <h3>Book an Appointment</h3>

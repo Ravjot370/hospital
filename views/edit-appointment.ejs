@@ -8,27 +8,31 @@
 </head>
 <body>
   <div class="container">
-    <h1>Edit Appointment</h1>
-    <form action="/update-appointment/<%= appointment.appointmentID %>" method="POST">
-      <div>
-        <label for="doctorID">Doctor ID:</label>
-        <input type="text" name="doctorID" id="doctorID" value="<%= appointment.doctorID %>" required>
-      </div>
-      <div>
-        <label for="appointmentDate">Date:</label>
-        <input type="date" name="appointmentDate" id="appointmentDate" value="<%= new Date(appointment.appointmentDate).toISOString().split('T')[0] %>" required>
-      </div>
-      <div>
-        <label for="appointmentDuration">Duration:</label>
-        <select name="appointmentDuration" id="appointmentDuration" required>
-          <option value="15" <% if (appointment.appointmentDuration === '15') { %> selected <% } %>>15 minutes</option>
-          <option value="30" <% if (appointment.appointmentDuration === '30') { %> selected <% } %>>30 minutes</option>
-          <option value="45" <% if (appointment.appointmentDuration === '45') { %> selected <% } %>>45 minutes</option>
-          <option value="60" <% if (appointment.appointmentDuration === '60') { %> selected <% } %>>60 minutes</option>
-        </select>
-      </div>
-      <button type="submit">Update Appointment</button>
-    </form>
+    <header>
+      <h1>Edit Appointment</h1>
+    </header>
+    <main>
+      <form action="/update-appointment/<%= appointment.appointmentID %>" method="POST" class="form">
+        <div class="form-group">
+          <label for="doctorID">Doctor ID:</label>
+          <input type="text" name="doctorID" id="doctorID" value="<%= appointment.doctorID %>" required>
+        </div>
+        <div class="form-group">
+          <label for="appointmentDate">Date:</label>
+          <input type="date" name="appointmentDate" id="appointmentDate" value="<%= new Date(appointment.appointmentDate).toISOString().split('T')[0] %>" required>
+        </div>
+        <div class="form-group">
+          <label for="appointmentDuration">Duration:</label>
+          <select name="appointmentDuration" id="appointmentDuration" required>
+            <option value="15" <% if (appointment.appointmentDuration === '15') { %> selected <% } %>>15 minutes</option>
+            <option value="30" <% if (appointment.appointmentDuration === '30') { %> selected <% } %>>30 minutes</option>
+            <option value="45" <% if (appointment.appointmentDuration === '45') { %> selected <% } %>>45 minutes</option>
+            <option value="60" <% if (appointment.appointmentDuration === '60') { %> selected <% } %>>60 minutes</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Appointment</button>
+      </form>
+    </main>
   </div>
 </body>
 </html>

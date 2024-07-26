@@ -74,20 +74,54 @@
     .button:hover {
       background-color: #0056b3;
     }
+    .logout-button {
+      float: right;
+      background-color: #dc3545;
+      text-decoration: none;
+    }
+    .logout-button:hover {
+      background-color: #c82333;
+    }
+    .profile-img {
+      width: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .profile-container {
+      display: flex;
+      align-items: center;
+    }
+    .profile-details {
+      max-width: 600px;
+    }
+    .profile-details p {
+      margin: 5px 0;
+    }
+    .card {
+      background: #fff;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome, <%= doctor.firstName %> <%= doctor.lastName %></h1>
+    <h1>Welcome to the Doctor Dashboard</h1>
+    <a href="/logout" class="button logout-button">Logout</a>
   </header>
   <div class="container">
     <div class="profile">
-      <h2>Profile</h2>
-      <!-- Profile data will be injected here -->
-      <p><strong>Name:</strong> <%= doctor.firstName %> <%= doctor.lastName %></p>
-      <p><strong>Specialization:</strong> <%= doctor.specialization %></p>
-      <p><strong>Email:</strong> <%= doctor.email %></p>
-      <p><strong>Phone:</strong> <%= doctor.phoneNumbers.join(', ') %></p>
+      <h2>Doctor Profile</h2>
+      <div class="profile-container">
+        <img src="/images/doctor-profile.jpg" alt="Doctor Profile" class="profile-img">
+      
+      </div>
     </div>
 
     <div class="patients">
@@ -125,6 +159,13 @@
       <h2>Upcoming Appointments</h2>
       <!-- Link to view appointments -->
       <a href="/view-appointments" class="button">View All Appointments</a>
+    </div>
+
+    <div class="card">
+      <h2>Manage Medical Records</h2>
+      <img src="/images/medical-record.jpeg" alt="Medical Records">
+      <a href="/medical-records" class="button">View Medical Records</a>
+      <a href="/medical-records/new" class="button">Create New Medical Record</a>
     </div>
   </div>
 </body>
