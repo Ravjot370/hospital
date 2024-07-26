@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #007bff;
+      padding: 15px;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: white;
+    }
+    .profile-section {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile-section img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      margin-right: 20px;
+    }
+    .profile-section h2 {
+      margin: 0;
+    }
+    .profile-details, .doctor-list, .hospital-list, .appointment-booking, .manage-appointments, .view-appointments {
+      background-color: white;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h3 {
+      margin-top: 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome, Patient</h1>
+    <nav>
+      <a href="/profile">Account</a>
+      <a href="/create-account">Create Account</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="profile-section">
+      <img src="/images/patient-photo.jpg" alt="Patient Photo">
+      <div>
+        <h2>John Doe</h2>
+        <p>Hospital: ABC Hospital</p>
+      </div>
+    </div>
+    <div class="profile-details">
+      <h3>Profile Details</h3>
+      <!-- Profile details content -->
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Email:</strong> john.doe@example.com</p>
+      <p><strong>Phone:</strong> +123456789</p>
+      <a href="/edit-profile" class="btn">Edit Profile</a>
+    </div>
+    <div class="doctor-list">
+      <h3>Available Doctors</h3>
+      <!-- List of doctors -->
+      <ul>
+        <li>Dr. Smith - Cardiologist</li>
+        <li>Dr. Johnson - Neurologist</li>
+        <li>Dr. Brown - General Practitioner</li>
+      </ul>
+    </div>
+    <div class="hospital-list">
+      <h3>Available Hospitals</h3>
+      <!-- List of hospitals -->
+      <ul>
+        <li>ABC Hospital</li>
+        <li>XYZ Medical Center</li>
+        <li>123 Clinic</li>
+      </ul>
+    </div>
+    <div class="appointment-booking">
+      <h3>Book an Appointment</h3>
+      <a href="/book-appointment" class="btn">Book Appointment</a>
+    </div>
+    <div class="manage-appointments">
+      <h3>Manage Appointments</h3>
+      <a href="/manage-appointments" class="btn">Manage Appointments</a>
+    </div>
+    <div class="view-appointments">
+      <h3>View Appointments</h3>
+      <a href="/view-appointments" class="btn">View Appointments</a>
+    </div>
+  </div>
+</body>
+</html>

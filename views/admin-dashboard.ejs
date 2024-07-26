@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome, Admin</h1>
+  </header>
+  <div class="container">
+    <div class="admin-content">
+      <h2>Manage Doctors</h2>
+      
+      <!-- Create Doctor Button -->
+      <a href="/create-doctor" class="form-group">
+        <button>Create New Doctor</button>
+      </a>
+      
+      <!-- List of Doctors -->
+      <h3>List of Doctors</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Doctor ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Specialization</th>
+            <th>Phone Numbers</th>
+            <th>Years of Experience</th>
+            <th>Email</th>
+            <th>Department ID</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (doctors && doctors.length > 0) { %>
+            <% doctors.forEach(doctor => { %>
+              <tr>
+                <td><%= doctor.doctorID %></td>
+                <td><%= doctor.firstName %></td>
+                <td><%= doctor.lastName %></td>
+                <td><%= doctor.specialization %></td>
+                <td><%= doctor.phoneNumbers.join(', ') %></td>
+                <td><%= doctor.experienceYears %></td>
+                <td><%= doctor.email %></td>
+                <td><%= doctor.departmentID %></td>
+                <td>
+                  <a href="/update-doctor/<%= doctor.doctorID %>"><button>Update</button></a>
+                  <form action="/delete-doctor/<%= doctor.doctorID %>" method="POST" style="display:inline;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="9">No doctors found.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

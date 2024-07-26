@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointments</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>Doctor Appointments</h2>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </header>
+    <main>
+      <div class="appointment-list">
+        <% appointments.forEach(appointment => { %>
+          <div class="appointment-item">
+            <div class="appointment-details">
+              <h3>Appointment ID: <%= appointment.appointmentID %></h3>
+              <p>Date: <%= appointment.appointmentDate.toDateString() %></p>
+              <p>Doctor ID: <%= appointment.doctorID %></p>
+              <p>Symptoms: <%= appointment.symptoms.join(', ') %></p>
+              <p>Diagnosis: <%= appointment.diagnosis %></p>
+              <p>Prescription: <%= appointment.prescription %></p>
+              <p>Notes: <%= appointment.notes %></p>
+            </div>
+            <div class="patient-info">
+              <h3>Patient Info</h3>
+              <p>Patient ID: <%= appointment.patientID %></p>
+              <!-- Assuming patient details are fetched separately and passed in -->
+              <% const patient = patients.find(p => p.patientID === appointment.patientID); %>
+              <% if (patient) { %>
+                <p>Name: <%= patient.firstName %> <%= patient.lastName %></p>
+                <p>Date of Birth: <%= patient.dateOfBirth.toDateString() %></p>
+                <p>Email: <%= patient.email %></p>
+                <p>Address: <%= patient.address %></p>
+                <p>Phone Numbers: <%= patient.phoneNumbers.join(', ') %></p>
+              <% } else { %>
+                <p>Patient details not found.</p>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

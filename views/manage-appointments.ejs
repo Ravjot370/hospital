@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Appointments</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Manage Appointments</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Duration</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% appointments.forEach(appointment => { %>
+          <tr>
+            <td><%= new Date(appointment.appointmentDate).toDateString() %></td>
+            <td><%= appointment.appointmentDuration %></td>
+            <td>
+              <a href="/edit-appointment/<%= appointment.appointmentID %>">Edit</a> | 
+              <a href="/delete-appointment/<%= appointment.appointmentID %>">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Appointments</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>View Appointments</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% appointments.forEach(appointment => { %>
+          <tr>
+            <td><%= new Date(appointment.appointmentDate).toDateString() %></td>
+            <td><%= appointment.appointmentDuration %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

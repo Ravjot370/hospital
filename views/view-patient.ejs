@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Details - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Patient Details</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/patients">Patients</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h2><%= patient.firstName %> <%= patient.lastName %></h2>
+    <p><strong>Email:</strong> <%= patient.email %></p>
+    <p><strong>Phone Numbers:</strong> <%= patient.phoneNumbers.join(', ') %></p>
+    <p><strong>Address:</strong> <%= patient.address %></p>
+    <p><strong>Date of Birth:</strong> <%= new Date(patient.dateOfBirth).toDateString() %></p>
+    <h3>Medical History</h3>
+    <% if (patient.medicalHistory.length > 0) { %>
+      <ul>
+        <% patient.medicalHistory.forEach(history => { %>
+          <li>
+            <p><strong>Illness:</strong> <%= history.illness %></p>
+            <p><strong>Treatment:</strong> <%= history.treatment %></p>
+            <p><strong>Medications:</strong> <%= history.medications.join(', ') %></p>
+            <p><strong>Date:</strong> <%= new Date(history.date).toDateString() %></p>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No medical history found.</p>
+    <% } %>
+    <a href="/update-patient/<%= patient._id %>">Update Patient</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Medical Record - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .form-section {
+      padding: 20px;
+    }
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Create Medical Record</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/patients">Patients</a>
+      <a href="/medical-records">Medical Records</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="form-section">
+      <h2>Create Medical Record</h2>
+      <form action="/medical-records" method="POST">
+        <div class="form-group">
+          <label for="appointmentID">Appointment ID:</label>
+          <input type="text" id="appointmentID" name="appointmentID" required>
+        </div>
+        <div class="form-group">
+          <label for="diagnosis">Diagnosis:</label>
+          <textarea id="diagnosis" name="diagnosis" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="prescriptions">Prescriptions:</label>
+          <textarea id="prescriptions" name="prescriptions" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn">Create Medical Record</button>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2024 Hospital Management System</p>
+  </footer>
+</body>
+</html>

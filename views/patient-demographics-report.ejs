@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Demographics Report - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #ddd 3px solid;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .report-content {
+      background: #fff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .report-content h2 {
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background: #333;
+      color: #fff;
+    }
+    .explanation {
+      margin-top: 20px;
+      padding: 10px;
+      background: #e9e9e9;
+      border-left: 5px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Patient Demographics Report</h1>
+  </header>
+  <div class="container">
+    <div class="report-content">
+      <p>This report shows information about the patients, such as their age groups, gender, and where they live. It helps the clinic understand their patients better and provide services that meet their needs.</p>
+      
+      <h2>Report Content:</h2>
+      
+      <h3>1. Age Distribution:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Age Range</th>
+            <th>Count</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0-18 years</td>
+            <td>20</td>
+            <td>13.3%</td>
+          </tr>
+          <tr>
+            <td>19-35 years</td>
+            <td>50</td>
+            <td>33.3%</td>
+          </tr>
+          <tr>
+            <td>36-60 years</td>
+            <td>60</td>
+            <td>40.0%</td>
+          </tr>
+          <tr>
+            <td>61+ years</td>
+            <td>20</td>
+            <td>13.3%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2. Gender Distribution:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Gender</th>
+            <th>Count</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Male</td>
+            <td>90</td>
+            <td>60%</td>
+          </tr>
+          <tr>
+            <td>Female</td>
+            <td>60</td>
+            <td>40%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3. Location Distribution:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Count</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>60</td>
+            <td>40%</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>50</td>
+            <td>33.3%</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>40</td>
+            <td>26.7%</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="explanation">
+        <h3>Explanation:</h3>
+        <p>The Age Distribution shows how many patients are in each age group.</p>
+        <p>The Gender Distribution shows how many patients are male or female.</p>
+        <p>The Location Distribution shows how many patients come from different cities.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

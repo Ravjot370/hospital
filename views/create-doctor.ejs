@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Doctor - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Create New Doctor</h1>
+  </header>
+  <div class="container">
+    <div class="admin-content">
+      <form action="/create-doctor" method="POST">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="specialization">Specialization:</label>
+          <input type="text" id="specialization" name="specialization" required>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumbers">Phone Numbers (comma separated):</label>
+          <input type="text" id="phoneNumbers" name="phoneNumbers" required>
+        </div>
+        <div class="form-group">
+          <label for="experienceYears">Years of Experience:</label>
+          <input type="number" id="experienceYears" name="experienceYears" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="departmentID">Department ID:</label>
+          <input type="text" id="departmentID" name="departmentID" required>
+        </div>
+        <div class="form-group">
+          <button type="submit">Create Doctor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

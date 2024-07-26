@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment - Hospital Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 10px;
+    }
+    input, select, button {
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Book an Appointment</h1>
+    <form action="/book-appointment" method="POST">
+      <div>
+        <label for="doctor">Select Doctor:</label>
+        <select name="doctor" id="doctor">
+          <option value="dr-smith">Dr. Smith - Cardiologist</option>
+          <option value="dr-johnson">Dr. Johnson - Neurologist</option>
+          <option value="dr-brown">Dr. Brown - General Practitioner</option>
+        </select>
+      </div>
+      <div>
+        <label for="date">Select Date:</label>
+        <input type="date" name="date" id="date" required>
+      </div>
+      <div>
+        <label for="appointmentDuration">Select Duration:</label>
+        <select name="appointmentDuration" id="appointmentDuration">
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
+      </div>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </div>
+</body>
+</html>
